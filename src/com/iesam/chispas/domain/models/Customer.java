@@ -4,7 +4,7 @@ public class Customer {
 
     private String code;
     private String name;
-    private String zipCode;
+    private String address;
     private String city;
     private String province;
     private String email;
@@ -26,12 +26,12 @@ public class Customer {
         this.name = name;
     }
 
-    public String getZipCode() {
-        return zipCode;
+    public String getAddress() {
+        return address;
     }
 
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCity() {

@@ -5,6 +5,7 @@ public class Sales {
     private String nameSales;
     private Double priceSales;
 
+    private IvaType ivaType;
     public String getIdSales() {
         return idSales;
     }
@@ -29,4 +30,11 @@ public class Sales {
         this.priceSales = priceSales;
     }
 
+    public IvaType getIvaType() {
+        return ivaType;
+    }
+
+    public void setIvaType(IvaType ivaType) {
+        this.ivaType = ivaType;
+    }
 }

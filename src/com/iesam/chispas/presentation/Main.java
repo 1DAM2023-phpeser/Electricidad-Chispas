@@ -1,7 +1,202 @@
 package com.iesam.chispas.presentation;
 
+import com.iesam.chispas.domain.models.*;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+    public static void main(String[] args) throws ParseException {
+
+        Scanner sc = new Scanner(System.in);
+
+        Autonomous autonomous1 = new Autonomous();
+        System.out.println("Introduzca el DNI");
+        autonomous1.setCode(sc.nextLine());
+        System.out.println("Introduzca el nombre");
+        autonomous1.setName(sc.nextLine());
+        System.out.println("Introduzca el Apellido");
+        autonomous1.setSurname(sc.nextLine());
+        System.out.println("Introduzca la direccion");
+        autonomous1.setAddress(sc.nextLine());
+        System.out.println("Introduzca la ciudad");
+        autonomous1.setCity(sc.nextLine());
+        System.out.println("Introduzca la provincia");
+        autonomous1.setProvince(sc.nextLine());
+        System.out.println("Introduzca el email");
+        autonomous1.setEmail(sc.nextLine());
+        System.out.println("Introduzca el numero de telefono");
+        autonomous1.setPhoneNumber(sc.nextLine());
+
+
+        Society society1 = new Society();
+        System.out.println("Introduzca el NIF");
+        society1.setCode(sc.nextLine());
+        System.out.println("Introduzca el nombre");
+        society1.setName(sc.nextLine());
+        System.out.println("Introduzca la direccion");
+        society1.setAddress(sc.nextLine());
+        System.out.println("Introduzca la ciudad");
+        society1.setCity(sc.nextLine());
+        System.out.println("Introduzca la provincia");
+        society1.setProvince(sc.nextLine());
+        System.out.println("Introduzca el email");
+        society1.setEmail(sc.nextLine());
+        System.out.println("Introduzca el numero de telefono");
+        society1.setPhoneNumber(sc.nextLine());
+
+
+        IvaType ivaType0 = new IvaType();
+        ivaType0.setType(0.00);
+
+        IvaType ivaType4 = new IvaType();
+        ivaType4.setType(4.00);
+
+        IvaType ivaType10 = new IvaType();
+        ivaType10.setType(10.00);
+
+        IvaType ivaType21 = new IvaType();
+        ivaType21.setType(21.00);
+
+
+        ArrayList<Sales> salesAutonomo = new ArrayList<>();
+        ArrayList<Sales> salesSociedad = new ArrayList<>();
+
+        Product product1 = new Product();
+        System.out.println("Introduzca el ID");
+        product1.setIdSales(sc.nextLine());
+        System.out.println("Introduzca el nombre");
+        product1.setNameSales(sc.nextLine());
+        System.out.println("Introduzca la marca");
+        product1.setBrand(sc.nextLine());
+        System.out.println("Introduzca el modelo");
+        product1.setModel(sc.nextLine());
+        System.out.println("Introduzca el precio (formato: XX.yy)");
+        product1.setPriceSales(sc.nextDouble());
+        Integer tipoIva = 8;
+        do {
+            System.out.println("Introduzca el tipo de iva( (0, 4, 10, 21)");
+            tipoIva = sc.nextInt();
+        }while ( tipoIva!=0 && tipoIva != 4 && tipoIva != 10 && tipoIva != 21 );
+        switch (tipoIva) {
+            case 0:
+                product1.setIvaType(ivaType0);
+            case 4:
+                product1.setIvaType(ivaType4);
+            case 10:
+                product1.setIvaType(ivaType10);
+            case 21:
+                product1.setIvaType(ivaType21);
+        }
+
+        String salto = sc.nextLine();
+
+
+        salesAutonomo.add(product1);
+
+        Service service1 = new Service();
+        System.out.println("Introduzca el ID");
+        service1.setIdSales(sc.nextLine());
+        System.out.println("Introduzca el nombre");
+        service1.setNameSales(sc.nextLine());
+        System.out.println("Introduzca el precio (formato: XX.yy)");
+        service1.setPriceSales(sc.nextDouble());
+        do {
+            System.out.println("Introduzca el tipo de iva( (0, 4, 10, 21)");
+            tipoIva = sc.nextInt();
+        }while ( tipoIva!=0 && tipoIva != 4 && tipoIva != 10 && tipoIva != 21 );
+        switch (tipoIva) {
+            case 0:
+                service1.setIvaType(ivaType0);
+            case 4:
+                service1.setIvaType(ivaType4);
+            case 10:
+                service1.setIvaType(ivaType10);
+            case 21:
+                service1.setIvaType(ivaType21);
+        }
+
+        salesAutonomo.add(service1);
+
+        Product product2 = new Product();
+        System.out.println("Introduzca el ID");
+        product2.setIdSales(sc.nextLine());
+        System.out.println("Introduzca el nombre");
+        product2.setNameSales(sc.nextLine());
+        System.out.println("Introduzca la marca");
+        product2.setBrand(sc.nextLine());
+        System.out.println("Introduzca el modelo");
+        product2.setModel(sc.nextLine());
+        System.out.println("Introduzca el precio (formato: XX,yy)");
+        product2.setPriceSales(sc.nextDouble());
+        do {
+            System.out.println("Introduzca el tipo de iva( (0, 4, 10, 21)");
+            tipoIva = sc.nextInt();
+        }while ( tipoIva!=0 && tipoIva != 4 && tipoIva != 10 && tipoIva != 21 );
+        switch (tipoIva) {
+            case 0:
+                product2.setIvaType(ivaType0);
+            case 4:
+                product2.setIvaType(ivaType4);
+            case 10:
+                product2.setIvaType(ivaType10);
+            case 21:
+                product2.setIvaType(ivaType21);
+        }
+
+        salesSociedad.add(product2);
+
+        Service service2 = new Service();
+        System.out.println("Introduzca el ID");
+        service2.setIdSales(sc.nextLine());
+        System.out.println("Introduzca el nombre");
+        service2.setNameSales(sc.nextLine());
+        System.out.println("Introduzca el precio (formato: XX,yy)");
+        service2.setPriceSales(sc.nextDouble());
+        do {
+            System.out.println("Introduzca el tipo de iva( (0, 4, 10, 21)");
+            tipoIva = sc.nextInt();
+        }while ( tipoIva!=0 && tipoIva != 4 && tipoIva != 10 && tipoIva != 21 );
+        switch (tipoIva) {
+            case 0:
+                service2.setIvaType(ivaType0);
+            case 4:
+                service2.setIvaType(ivaType4);
+            case 10:
+                service2.setIvaType(ivaType10);
+            case 21:
+                service2.setIvaType(ivaType21);
+        }
+
+        salesSociedad.add(service2);
+
+        Invoice invoice1 = new Invoice();
+        System.out.println("Introduzca el nombre");
+        invoice1.setIdInv("5");
+        System.out.println("Introduce la fecha de la factura (dd/mm/yyyy)");
+        invoice1.setDate(sc.nextLine());
+        invoice1.setCustomer(autonomous1);
+        invoice1.setSales(salesAutonomo);
+        invoice1.setTaxBase(product1.getPriceSales() + service1.getPriceSales());
+        invoice1.setTotal(product1.getPriceSales() + product1.getPriceSales() * product1.getIvaType().getType() /100 + service1.getPriceSales() + service1.getPriceSales() * service1.getIvaType().getType() /100);
+
+        Invoice invoice2 = new Invoice();
+        System.out.println("Introduzca el ID");
+        invoice2.setIdInv("6");
+        System.out.println("Introduce la fecha de la factura (dd/mm/yyyy)");
+        invoice2.setDate(sc.nextLine());
+        invoice2.setCustomer(society1);
+        invoice2.setSales(salesSociedad);
+        invoice2.setTaxBase(product2.getPriceSales() + service2.getPriceSales());
+        invoice2.setTotal(product2.getPriceSales() + product2.getPriceSales() * product2.getIvaType().getType() /100 + service2.getPriceSales() + service2.getPriceSales() * service2.getIvaType().getType() /100);
+
+
+
+        InvoicePrinter impFacturaA = new InvoicePrinter();
+        impFacturaA.print(invoice1);
+        impFacturaA.print(invoice2);
+
+
     }
 }

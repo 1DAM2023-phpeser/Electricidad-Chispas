@@ -2,22 +2,13 @@ package com.iesam.chispas.domain.models;
 
 public class Autonomous extends Customer {
 
-    private String dni;
-    private String fullName;
+   private String Surname;
 
-    public String getCode() {
-        return dni;
+    public String getSurname() {
+        return Surname;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public String getName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setSurname(String surname) {
+        Surname = surname;
     }
 }

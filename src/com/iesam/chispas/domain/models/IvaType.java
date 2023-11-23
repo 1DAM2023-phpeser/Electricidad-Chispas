@@ -2,13 +2,13 @@ package com.iesam.chispas.domain.models;
 
 public class IvaType {
 
-    private Integer type;
+    private Double type;
 
-    public Integer getType() {
+    public Double getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(Double type) {
         this.type = type;
     }
 }

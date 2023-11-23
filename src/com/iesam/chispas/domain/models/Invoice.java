@@ -6,12 +6,11 @@ import java.util.Date;
 public class Invoice {
 
     private String idInv;
-    private Date date;
+    private String date;
     private Double taxBase;
     private Double total;
     private Customer customer;
-    private ArrayList<Customer> customers;
-    private ArrayList<Product> products;
+    private ArrayList<Sales> sales;
 
     public String getIdInv() {
         return idInv;
@@ -21,11 +20,11 @@ public class Invoice {
         this.idInv = idInv;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -53,19 +52,11 @@ public class Invoice {
         this.customer = customer;
     }
 
-    public ArrayList<Customer> getCustomers() {
-        return customers;
+    public ArrayList<Sales> getSales() {
+        return sales;
     }
 
-    public void setCustomers(ArrayList<Customer> customers) {
-        this.customers = customers;
-    }
-
-    public ArrayList<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(ArrayList<Product> products) {
-        this.products = products;
+    public void setSales(ArrayList<Sales> sales) {
+        this.sales = sales;
     }
 }
