@@ -7,11 +7,13 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args){
 
         Scanner sc = new Scanner(System.in);
 
         Autonomous autonomous1 = new Autonomous();
+        System.out.println("----------Datos del autonomo----------");
+        autonomous1.setType("Autonomo");
         System.out.println("Introduzca el DNI");
         autonomous1.setCode(sc.nextLine());
         System.out.println("Introduzca el nombre");
@@ -30,7 +32,9 @@ public class Main {
         autonomous1.setPhoneNumber(sc.nextLine());
 
 
-        Society society1 = new Society();
+      Society society1 = new Society();
+     System.out.println("----------Datos de la Sociedad----------");
+     society1.setType("Sociedad");
         System.out.println("Introduzca el NIF");
         society1.setCode(sc.nextLine());
         System.out.println("Introduzca el nombre");
@@ -64,6 +68,7 @@ public class Main {
         ArrayList<Sales> salesSociedad = new ArrayList<>();
 
         Product product1 = new Product();
+        System.out.println("----------Datos del Producto----------");
         System.out.println("Introduzca el ID");
         product1.setIdSales(sc.nextLine());
         System.out.println("Introduzca el nombre");
@@ -78,7 +83,7 @@ public class Main {
         do {
             System.out.println("Introduzca el tipo de iva( (0, 4, 10, 21)");
             tipoIva = sc.nextInt();
-        }while ( tipoIva!=0 && tipoIva != 4 && tipoIva != 10 && tipoIva != 21 );
+        } while (tipoIva != 0 && tipoIva != 4 && tipoIva != 10 && tipoIva != 21);
         switch (tipoIva) {
             case 0:
                 product1.setIvaType(ivaType0);
@@ -96,6 +101,7 @@ public class Main {
         salesAutonomo.add(product1);
 
         Service service1 = new Service();
+        System.out.println("----------Datos del Servicio----------");
         System.out.println("Introduzca el ID");
         service1.setIdSales(sc.nextLine());
         System.out.println("Introduzca el nombre");
@@ -105,7 +111,7 @@ public class Main {
         do {
             System.out.println("Introduzca el tipo de iva( (0, 4, 10, 21)");
             tipoIva = sc.nextInt();
-        }while ( tipoIva!=0 && tipoIva != 4 && tipoIva != 10 && tipoIva != 21 );
+        } while (tipoIva != 0 && tipoIva != 4 && tipoIva != 10 && tipoIva != 21);
         switch (tipoIva) {
             case 0:
                 service1.setIvaType(ivaType0);
@@ -117,9 +123,12 @@ public class Main {
                 service1.setIvaType(ivaType21);
         }
 
+        salto = sc.nextLine();
+
         salesAutonomo.add(service1);
 
         Product product2 = new Product();
+        System.out.println("----------Datos del Producto----------");
         System.out.println("Introduzca el ID");
         product2.setIdSales(sc.nextLine());
         System.out.println("Introduzca el nombre");
@@ -128,12 +137,12 @@ public class Main {
         product2.setBrand(sc.nextLine());
         System.out.println("Introduzca el modelo");
         product2.setModel(sc.nextLine());
-        System.out.println("Introduzca el precio (formato: XX,yy)");
+        System.out.println("Introduzca el precio (formato: XX.yy)");
         product2.setPriceSales(sc.nextDouble());
         do {
             System.out.println("Introduzca el tipo de iva( (0, 4, 10, 21)");
             tipoIva = sc.nextInt();
-        }while ( tipoIva!=0 && tipoIva != 4 && tipoIva != 10 && tipoIva != 21 );
+        } while (tipoIva != 0 && tipoIva != 4 && tipoIva != 10 && tipoIva != 21);
         switch (tipoIva) {
             case 0:
                 product2.setIvaType(ivaType0);
@@ -145,19 +154,22 @@ public class Main {
                 product2.setIvaType(ivaType21);
         }
 
+        salto = sc.nextLine();
+
         salesSociedad.add(product2);
 
         Service service2 = new Service();
+        System.out.println("----------Datos del Servicio----------");
         System.out.println("Introduzca el ID");
         service2.setIdSales(sc.nextLine());
         System.out.println("Introduzca el nombre");
         service2.setNameSales(sc.nextLine());
-        System.out.println("Introduzca el precio (formato: XX,yy)");
+        System.out.println("Introduzca el precio (formato: XX.yy)");
         service2.setPriceSales(sc.nextDouble());
         do {
             System.out.println("Introduzca el tipo de iva( (0, 4, 10, 21)");
             tipoIva = sc.nextInt();
-        }while ( tipoIva!=0 && tipoIva != 4 && tipoIva != 10 && tipoIva != 21 );
+        } while (tipoIva != 0 && tipoIva != 4 && tipoIva != 10 && tipoIva != 21);
         switch (tipoIva) {
             case 0:
                 service2.setIvaType(ivaType0);
@@ -169,34 +181,37 @@ public class Main {
                 service2.setIvaType(ivaType21);
         }
 
+        salto = sc.nextLine();
+
         salesSociedad.add(service2);
 
         Invoice invoice1 = new Invoice();
-        System.out.println("Introduzca el nombre");
-        invoice1.setIdInv("5");
+        System.out.println("----------Datos de la Factura----------");
+        System.out.println("Introduzca el ID");
+        invoice1.setIdInv(sc.nextLine());
         System.out.println("Introduce la fecha de la factura (dd/mm/yyyy)");
         invoice1.setDate(sc.nextLine());
         invoice1.setCustomer(autonomous1);
         invoice1.setSales(salesAutonomo);
         invoice1.setTaxBase(product1.getPriceSales() + service1.getPriceSales());
-        invoice1.setTotal(product1.getPriceSales() + product1.getPriceSales() * product1.getIvaType().getType() /100 + service1.getPriceSales() + service1.getPriceSales() * service1.getIvaType().getType() /100);
+        invoice1.setTotal(product1.getPriceSales() + product1.getPriceSales() * product1.getIvaType().getType() / 100 + service1.getPriceSales() + service1.getPriceSales() * service1.getIvaType().getType() / 100);
 
-        Invoice invoice2 = new Invoice();
+       Invoice invoice2 = new Invoice();
+       System.out.println("----------Datos de la Factura----------");
         System.out.println("Introduzca el ID");
-        invoice2.setIdInv("6");
+        invoice2.setIdInv(sc.nextLine());
         System.out.println("Introduce la fecha de la factura (dd/mm/yyyy)");
         invoice2.setDate(sc.nextLine());
         invoice2.setCustomer(society1);
         invoice2.setSales(salesSociedad);
         invoice2.setTaxBase(product2.getPriceSales() + service2.getPriceSales());
-        invoice2.setTotal(product2.getPriceSales() + product2.getPriceSales() * product2.getIvaType().getType() /100 + service2.getPriceSales() + service2.getPriceSales() * service2.getIvaType().getType() /100);
+        invoice2.setTotal(product2.getPriceSales() + product2.getPriceSales() * product2.getIvaType().getType() / 100 + service2.getPriceSales() + service2.getPriceSales() * service2.getIvaType().getType() / 100);
 
 
-
-        InvoicePrinter impFacturaA = new InvoicePrinter();
-        impFacturaA.print(invoice1);
-        impFacturaA.print(invoice2);
+        InvoicePrinter.print(invoice1);
+        InvoicePrinter.print(invoice2);
 
 
     }
+
 }

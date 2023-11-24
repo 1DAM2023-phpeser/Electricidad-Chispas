@@ -10,6 +10,7 @@ public class Invoice {
     private Double taxBase;
     private Double total;
     private Customer customer;
+    private Autonomous autonomous;
     private ArrayList<Sales> sales;
 
     public String getIdInv() {
@@ -58,5 +59,13 @@ public class Invoice {
 
     public void setSales(ArrayList<Sales> sales) {
         this.sales = sales;
+    }
+
+    public Autonomous getAutonomous() {
+        return autonomous;
+    }
+
+    public void setAutonomous(Autonomous autonomous) {
+        this.autonomous = autonomous;
     }
 }

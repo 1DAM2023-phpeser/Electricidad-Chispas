@@ -3,6 +3,7 @@ package com.iesam.chispas.domain.models;
 public class Customer {
 
     private String code;
+    private String type;
     private String name;
     private String address;
     private String city;
@@ -16,6 +17,14 @@ public class Customer {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getName() {

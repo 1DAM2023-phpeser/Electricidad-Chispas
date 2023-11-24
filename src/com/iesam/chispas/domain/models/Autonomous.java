@@ -9,6 +9,6 @@ public class Autonomous extends Customer {
     }
 
     public void setSurname(String surname) {
-        Surname = surname;
+        this.Surname = surname;
     }
 }
