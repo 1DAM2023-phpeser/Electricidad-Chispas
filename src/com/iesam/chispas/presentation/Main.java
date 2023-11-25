@@ -2,12 +2,10 @@ package com.iesam.chispas.presentation;
 
 import com.iesam.chispas.domain.models.*;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
 
@@ -32,9 +30,9 @@ public class Main {
         autonomous1.setPhoneNumber(sc.nextLine());
 
 
-      Society society1 = new Society();
-     System.out.println("----------Datos de la Sociedad----------");
-     society1.setType("Sociedad");
+        Society society1 = new Society();
+        System.out.println("----------Datos de la Sociedad----------");
+        society1.setType("Sociedad");
         System.out.println("Introduzca el NIF");
         society1.setCode(sc.nextLine());
         System.out.println("Introduzca el nombre");
@@ -191,19 +189,21 @@ public class Main {
         invoice1.setIdInv(sc.nextLine());
         System.out.println("Introduce la fecha de la factura (dd/mm/yyyy)");
         invoice1.setDate(sc.nextLine());
-        invoice1.setCustomer(autonomous1);
-        invoice1.setSales(salesAutonomo);
         invoice1.setTaxBase(product1.getPriceSales() + service1.getPriceSales());
         invoice1.setTotal(product1.getPriceSales() + product1.getPriceSales() * product1.getIvaType().getType() / 100 + service1.getPriceSales() + service1.getPriceSales() * service1.getIvaType().getType() / 100);
+        invoice1.addSales(product1);
+        invoice1.addSales(service1);
 
-       Invoice invoice2 = new Invoice();
-       System.out.println("----------Datos de la Factura----------");
+
+
+        Invoice invoice2 = new Invoice();
+        System.out.println("----------Datos de la Factura----------");
         System.out.println("Introduzca el ID");
         invoice2.setIdInv(sc.nextLine());
         System.out.println("Introduce la fecha de la factura (dd/mm/yyyy)");
         invoice2.setDate(sc.nextLine());
         invoice2.setCustomer(society1);
-        invoice2.setSales(salesSociedad);
+        invoice2.setSalesList(salesSociedad);
         invoice2.setTaxBase(product2.getPriceSales() + service2.getPriceSales());
         invoice2.setTotal(product2.getPriceSales() + product2.getPriceSales() * product2.getIvaType().getType() / 100 + service2.getPriceSales() + service2.getPriceSales() * service2.getIvaType().getType() / 100);
 

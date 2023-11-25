@@ -1,7 +1,6 @@
 package com.iesam.chispas.domain.models;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Invoice {
 
@@ -11,7 +10,7 @@ public class Invoice {
     private Double total;
     private Customer customer;
     private Autonomous autonomous;
-    private ArrayList<Sales> sales;
+    private ArrayList<Sales> salesList = new ArrayList<>();
 
     public String getIdInv() {
         return idInv;
@@ -53,12 +52,20 @@ public class Invoice {
         this.customer = customer;
     }
 
-    public ArrayList<Sales> getSales() {
-        return sales;
+    public ArrayList<Sales> getSalesList() {
+        return salesList;
     }
 
-    public void setSales(ArrayList<Sales> sales) {
-        this.sales = sales;
+    public void setSalesList(ArrayList<Sales> salesList) {
+        this.salesList = salesList;
+    }
+
+    public void addSales(Sales sales) {
+        salesList.add(sales);
+    }
+
+    public Sales getSales(Integer posicion) {
+        return salesList.get(posicion);
     }
 
     public Autonomous getAutonomous() {

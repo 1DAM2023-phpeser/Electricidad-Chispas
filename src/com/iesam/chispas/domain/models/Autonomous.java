@@ -4,6 +4,11 @@ public class Autonomous extends Customer {
 
    private String Surname;
 
+@Override
+    public String getName() {
+        return super.getName() + " " + this.getSurname();
+    }
+
     public String getSurname() {
         return Surname;
     }

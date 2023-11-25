@@ -1,7 +1,5 @@
 package com.iesam.chispas.domain.models;
 
-import java.util.ArrayList;
-
 public class InvoicePrinter {
 
     public static void print(Invoice invoice) {
@@ -18,12 +16,12 @@ public class InvoicePrinter {
                 "Provincia: " + invoice.getCustomer().getProvince() + "\n" +
                 "Email: " + invoice.getCustomer().getEmail() + "\n" +
                 "----------Linea Venta(producto/servicio)----------");
-        for (int i = 0; i <= 1; i++) {
-            System.out.println("Codigo: " + invoice.getSales().get(i).getIdSales() + "\n" +
-                    "Nombre: " + invoice.getSales().get(i).getNameSales() + "\n" +
-                    "Precio: " + invoice.getSales().get(i).getPriceSales() + "\n" +
-                    "Tipo IVA: " + invoice.getSales().get(i).getIvaType().getType() + "%\n" +
-                    "Total con IVA: " + invoice.getSales().get(i).getPriceSales() + " + " + invoice.getSales().get(i).getPriceSales() * invoice.getSales().get(i).getIvaType().getType() / 100 + "\n" +
+        for (Sales sales : invoice.getSalesList()) { //La condicion del for lo he cogido de el ejemplo que has subido.
+            System.out.println("Codigo: " + sales.getIdSales() + "\n" +
+                    "Nombre: " + sales.getNameSales()  + "\n" +
+                    "Precio: " + sales.getPriceSales() + "\n" +
+                    "Tipo IVA: " + sales.getIvaType()+ "%\n" +
+                    "Total con IVA: " + sales.getPriceSales() + " + " + sales.getPriceSales() * sales.getIvaType().getType() / 100 + "\n" +
                     "------------------------------");
         }
         System.out.println("Base Imponible: " + invoice.getTaxBase() + "\n" +
