@@ -7,7 +7,7 @@ public class Autonomous extends Customer {
 @Override
     public String getName() {
         return super.getName() + " " + this.getSurname();
-    }
+    } //No se me habia ocurrido esta forma de meter el apellido
 
     public String getSurname() {
         return Surname;

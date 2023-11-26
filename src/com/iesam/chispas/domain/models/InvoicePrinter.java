@@ -20,21 +20,12 @@ public class InvoicePrinter {
             System.out.println("Codigo: " + sales.getIdSales() + "\n" +
                     "Nombre: " + sales.getNameSales()  + "\n" +
                     "Precio: " + sales.getPriceSales() + "\n" +
-                    "Tipo IVA: " + sales.getIvaType()+ "%\n" +
+                    "Tipo IVA: " + sales.getIvaType().getType()+ "%\n" +
                     "Total con IVA: " + sales.getPriceSales() + " + " + sales.getPriceSales() * sales.getIvaType().getType() / 100 + "\n" +
                     "------------------------------");
         }
         System.out.println("Base Imponible: " + invoice.getTaxBase() + "\n" +
                 "Total Factura: " + Math.round(invoice.getTotal() * 100.00) / 100.00);
-
-           /* try {
-                System.out.println("First character: " +  invoice.getAutonomous().getSurname() );
-            }
-            catch(NullPointerException e) {
-                System.out.println("NullPointerException thrown!");
-            }*/
-        // Aqui he intentado meter el apellido del autonomo pero me sale null y no se el porqué, lo he estado investigando pero no logro
-        //dar con ello
     }
 
 

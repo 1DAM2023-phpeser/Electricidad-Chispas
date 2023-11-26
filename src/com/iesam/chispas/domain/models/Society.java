@@ -2,15 +2,18 @@ package com.iesam.chispas.domain.models;
 
 public class Society extends Customer {
 
+    private String telEmpresa;
 
-    private String nameSociety;
-
-
-    public String getNameSociety() {
-        return nameSociety;
+    @Override
+    public String getPhoneNumber() {
+        return super.getPhoneNumber() + " || Numero fijo: " + telEmpresa;
     }
 
-    public void setNameSociety(String nameSociety) {
-        this.nameSociety = nameSociety;
+    public String getTelEmpresa() {
+        return telEmpresa;
+    }
+
+    public void setTelEmpresa(String telEmpresa) {
+        this.telEmpresa = telEmpresa;
     }
 }

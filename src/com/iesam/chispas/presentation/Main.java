@@ -45,6 +45,8 @@ public class Main {
         society1.setProvince(sc.nextLine());
         System.out.println("Introduzca el email");
         society1.setEmail(sc.nextLine());
+        System.out.println("Introduzca un numero de telefono fijo o de empresa");
+        society1.setTelEmpresa(sc.nextLine());
         System.out.println("Introduzca el numero de telefono");
         society1.setPhoneNumber(sc.nextLine());
 
@@ -62,8 +64,6 @@ public class Main {
         ivaType21.setType(21.00);
 
 
-        ArrayList<Sales> salesAutonomo = new ArrayList<>();
-        ArrayList<Sales> salesSociedad = new ArrayList<>();
 
         Product product1 = new Product();
         System.out.println("----------Datos del Producto----------");
@@ -77,7 +77,7 @@ public class Main {
         product1.setModel(sc.nextLine());
         System.out.println("Introduzca el precio (formato: XX.yy)");
         product1.setPriceSales(sc.nextDouble());
-        Integer tipoIva = 8;
+        int tipoIva = 8;
         do {
             System.out.println("Introduzca el tipo de iva( (0, 4, 10, 21)");
             tipoIva = sc.nextInt();
@@ -96,15 +96,15 @@ public class Main {
         String salto = sc.nextLine();
 
 
-        salesAutonomo.add(product1);
-
         Service service1 = new Service();
         System.out.println("----------Datos del Servicio----------");
         System.out.println("Introduzca el ID");
         service1.setIdSales(sc.nextLine());
         System.out.println("Introduzca el nombre");
         service1.setNameSales(sc.nextLine());
-        System.out.println("Introduzca el precio (formato: XX.yy)");
+        System.out.println("Introduzca el numero de trabajadores necesitados");
+        service1.setNumTrabajadores(sc.nextLine());
+        System.out.println("Introduzca el precio (formato: XX,yy)");
         service1.setPriceSales(sc.nextDouble());
         do {
             System.out.println("Introduzca el tipo de iva( (0, 4, 10, 21)");
@@ -123,7 +123,6 @@ public class Main {
 
         salto = sc.nextLine();
 
-        salesAutonomo.add(service1);
 
         Product product2 = new Product();
         System.out.println("----------Datos del Producto----------");
@@ -154,12 +153,12 @@ public class Main {
 
         salto = sc.nextLine();
 
-        salesSociedad.add(product2);
-
         Service service2 = new Service();
         System.out.println("----------Datos del Servicio----------");
         System.out.println("Introduzca el ID");
         service2.setIdSales(sc.nextLine());
+        System.out.println("Introduzca el numero de trabajadores necesitados");
+        service2.setNumTrabajadores(sc.nextLine());
         System.out.println("Introduzca el nombre");
         service2.setNameSales(sc.nextLine());
         System.out.println("Introduzca el precio (formato: XX.yy)");
@@ -181,7 +180,6 @@ public class Main {
 
         salto = sc.nextLine();
 
-        salesSociedad.add(service2);
 
         Invoice invoice1 = new Invoice();
         System.out.println("----------Datos de la Factura----------");
@@ -191,6 +189,7 @@ public class Main {
         invoice1.setDate(sc.nextLine());
         invoice1.setTaxBase(product1.getPriceSales() + service1.getPriceSales());
         invoice1.setTotal(product1.getPriceSales() + product1.getPriceSales() * product1.getIvaType().getType() / 100 + service1.getPriceSales() + service1.getPriceSales() * service1.getIvaType().getType() / 100);
+        invoice1.setCustomer(autonomous1);
         invoice1.addSales(product1);
         invoice1.addSales(service1);
 
@@ -202,14 +201,16 @@ public class Main {
         invoice2.setIdInv(sc.nextLine());
         System.out.println("Introduce la fecha de la factura (dd/mm/yyyy)");
         invoice2.setDate(sc.nextLine());
-        invoice2.setCustomer(society1);
-        invoice2.setSalesList(salesSociedad);
         invoice2.setTaxBase(product2.getPriceSales() + service2.getPriceSales());
         invoice2.setTotal(product2.getPriceSales() + product2.getPriceSales() * product2.getIvaType().getType() / 100 + service2.getPriceSales() + service2.getPriceSales() * service2.getIvaType().getType() / 100);
+        invoice2.setCustomer(society1);
+        invoice2.addSales(product2);
+        invoice2.addSales(service2);
 
 
         InvoicePrinter.print(invoice1);
         InvoicePrinter.print(invoice2);
+        sc.close();
 
 
     }

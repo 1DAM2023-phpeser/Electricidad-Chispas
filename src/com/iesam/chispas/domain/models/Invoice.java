@@ -60,6 +60,7 @@ public class Invoice {
         this.salesList = salesList;
     }
 
+    //Los dos siguientes metodos fueron gracias al ejemplo
     public void addSales(Sales sales) {
         salesList.add(sales);
     }
